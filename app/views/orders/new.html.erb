@@ -1,2 +1,23 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div class="single-form-container">
+  <div class="boxed-group">
+    <h3>购买商品详情</h3>
+    <div class="boxed-group-inner">
+      <%= form_for @order do |f| %>
+      <dl class="form">
+        <dt> <%= f.label '商品名称' %> </dt>
+        <dd> <%= f.text_field :subject, :value => "A Donkey" %> </dd>
+      </dl>
+      <dl class="form">
+        <dt> <%= f.label '商品单价（元）' %> </dt>
+        <dd> <%= f.text_field :price, :value => "0.01" %> </dd>
+      </dl>
+      <dl class="form">
+        <dt> <%= f.label '商品数量' %> </dt>
+        <dd> <%= f.text_field :quantity, :value => "2" %> </dd>
+      </dl>
+        <%= f.submit '提交', :class => "button  primary" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
