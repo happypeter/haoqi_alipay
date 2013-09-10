@@ -1,0 +1,34 @@
+<div class="single-table-container">
+ <%= link_to "HOME", root_path %>
+ <div class="boxed-group">
+   <h3>订单</h3>
+     <div class="boxed-group-inner seamless">
+       <table class="boxed-group-table">
+         <thead>
+           <tr>
+             <th>out_trade_no</th>
+             <th>商品名称</th>
+             <th>商品单价（元）</th>
+             <th>商品数量</th>
+           </tr>
+         </thead>
+         <tbody>
+           <tr>
+             <td><%= @order.out_trade_no %></td>
+             <td><%= @order.subject %></td>
+             <td> <%= @order.price %></td>
+             <td><%= @order.quantity  %></td>
+           </tr>
+         </tbody>
+       </table>
+     </div>
+   </div>
+   <%= form_tag "/checkout" do %>
+     <%= hidden_field_tag :price, @order.price %>
+     <%= hidden_field_tag :quantity, @order.quantity %>
+     <%= hidden_field_tag :subject, @order.subject %>
+     <%= hidden_field_tag :out_trade_no, @order.out_trade_no %>
+     <%= submit_tag '提交', :class => "button primary " %>
+   <% end %>
+</div>
+
