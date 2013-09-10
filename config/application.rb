@@ -53,6 +53,12 @@ module HaoqiAlipay
     # parameters by using an attr_accessible or attr_protected declaration.
     config.active_record.whitelist_attributes = true
 
+    config.generators do |g|
+        g.assets false
+        g.helper false
+        g.test_framework false
+    end
+
     # Enable the asset pipeline
     config.assets.enabled = true
 
