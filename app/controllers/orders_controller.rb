@@ -14,4 +14,16 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
+  def checkout
+     options = {
+      :partner           => Settings.alipay.pid,
+      :key               => Settings.alipay.secret,
+      :seller_email      => Settings.alipay.seller_email,
+      :out_trade_no      => params[:out_trade_no],
+      :subject           => params[:subject],
+      :price             => params[:price],
+      :quantity          => params[:quantity],
+    }
+    redirect_to AlipayDualfun.trade_create_by_buyer_url(options)
+  end
 end
