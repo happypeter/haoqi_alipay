@@ -33,7 +33,12 @@ class OrdersController < ApplicationController
   end
 
   def done
-    flash[:notice] = "付款成功啦!"
+    notify_params = params.except(*request.path_parameters.keys)
+    if AlipayDualfun.notify_verify?(notify_params)
+      flash[:notice] = "付款成功啦!"
+    else
+      flash[:notice] = "付款error啦!"
+    end
     redirect_to :root
   end
 
@@ -43,9 +48,12 @@ class OrdersController < ApplicationController
 
   private
     def update_order
-      order = Order.find_by_out_trade_no(params[:out_trade_no])
-      if params[:trade_status] == 'TRADE_FINISHED' && order.trade_status != 'TRADE_FINISHED'
-        order.update_attributes(trade_status: params[:trade_status])
+      notify_params = params.except(*request.path_parameters.keys)
+      if AlipayDualfun.notify_verify?(notify_params)
+        order = Order.find_by_out_trade_no(params[:out_trade_no])
+        if params[:trade_status] == 'TRADE_FINISHED' && order.trade_status != 'TRADE_FINISHED'
+          order.update_attributes(trade_status: params[:trade_status])
+        end
       end
     end
 end
