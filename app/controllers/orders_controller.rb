@@ -48,11 +48,21 @@ class OrdersController < ApplicationController
 
   private
     def update_order
+      options = {
+        :partner           => Settings.alipay.pid,
+        :trade_no          => params[:trade_no],
+        :logistics_name    => 'haoqicat course'
+      }
       notify_params = params.except(*request.path_parameters.keys)
       if AlipayDualfun.notify_verify?(notify_params)
         order = Order.find_by_out_trade_no(params[:out_trade_no])
-        if params[:trade_status] == 'TRADE_FINISHED' && order.trade_status != 'TRADE_FINISHED'
-          order.update_attributes(trade_status: params[:trade_status])
+        if order.trade_status != 'TRADE_FINISHED'
+          if params[:trade_status] == 'TRADE_FINISHED'
+            order.update_attributes(trade_status: 'TRADE_FINISHED')
+          elsif params[:trade_status] == "WAIT_SELLER_SEND_GOODS" # when pay with DanbaoJiaoyi
+            AlipayDualfun.send_goods_confirm_by_platform(options)
+            order.update_attributes(trade_status: 'TRADE_FINISHED')
+          end
         end
       end
     end
