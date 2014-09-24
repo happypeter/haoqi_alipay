@@ -1,9 +1,0 @@
-{
-	"folders":
-	[
-		{
-			"path": "/home/peter/haoqi_alipay",
-      "folder_exclude_patterns": ["tmp"]
-		}
-	]
-}
