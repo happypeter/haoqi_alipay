@@ -1,7 +1,4 @@
 
-#### 在线 demo
-
- http://haoqi_alipay.happypeter.org/
 
 #### 课程概要
 
