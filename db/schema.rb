@@ -9,18 +9,26 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131021025434) do
+ActiveRecord::Schema.define(version: 20150618013210) do
 
-  create_table "orders", :force => true do |t|
+  create_table "cups", force: true do |t|
+    t.string   "name"
+    t.float    "price",      limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "cover"
+  end
+
+  create_table "orders", force: true do |t|
+    t.integer  "course_id"
     t.string   "out_trade_no"
-    t.string   "subject"
-    t.float    "price"
-    t.integer  "quantity"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
     t.string   "trade_status"
+    t.string   "subject"
+    t.float    "total_fee",    limit: 24
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end

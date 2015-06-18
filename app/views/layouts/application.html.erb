@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>HaoqiAlipay</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
+  <title>AlipayEscrowDemo</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="flash-message">
-    <%= flash[:notice] %>
+  <header>
+    <%= yield :head %>
+  </header>
+  <div class="wrapper">
+    <%= yield %>
   </div>
-
-  <%= yield %>
-
 </body>
 </html>

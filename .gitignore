@@ -15,3 +15,4 @@ settings.yml
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+alipay.rb

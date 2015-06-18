@@ -1,0 +1,25 @@
+<table>
+  <tr>
+    <th>订单号</th>
+    <th>课程名</th>
+    <th>价格</th>
+    <th>数量</th>
+    <th>共计</th>
+  </tr>
+  <tr>
+    <td><%= out_trade_no %></td>
+    <td><%= cup.name %></td>
+    <td><%= cup.price %> 元</td>
+    <td>1</td>
+    <td><%= cup.price %> 元</td>
+  </tr>
+</table>
+<%= form_for(order) do |f| %>
+  <%= f.hidden_field :course_id, value: cup.id %>
+  <%= f.hidden_field :subject, value: cup.name %>
+  <%= f.hidden_field :out_trade_no, value: out_trade_no %>
+  <%= f.hidden_field :total_fee, value: cup.price * 1 %>
+<div class="action">
+  <%= f.submit "提交订单", class: "order-button" %>
+</div>
+<% end %>

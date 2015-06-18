@@ -5,3 +5,5 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+Cup.create([{ name: '白色杯子', price: '4.5', cover: 'white.jpg'}, { name: '绿色杯子', price: '7.5', cover: 'green.jpg'}])

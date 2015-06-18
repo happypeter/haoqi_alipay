@@ -1,23 +1,6 @@
-<div class="single-form-container">
-  <div class="boxed-group">
-    <h3>购买商品详情</h3>
-    <div class="boxed-group-inner">
-      <%= form_for @order do |f| %>
-      <dl class="form">
-        <dt> <%= f.label '商品名称' %> </dt>
-        <dd> <%= f.text_field :subject, :value => "A Donkey" %> </dd>
-      </dl>
-      <dl class="form">
-        <dt> <%= f.label '商品单价（元）' %> </dt>
-        <dd> <%= f.text_field :price, :value => "0.01" %> </dd>
-      </dl>
-      <dl class="form">
-        <dt> <%= f.label '商品数量' %> </dt>
-        <dd> <%= f.text_field :quantity, :value => "2" %> </dd>
-      </dl>
-        <%= f.submit '提交', :class => "button  primary" %>
-      <% end %>
-
-    </div>
-  </div>
+<% content_for :head do %>
+  订单信息
+<% end %>
+<div class="new-order">
+  <%= render partial: "form", locals: { out_trade_no: @out_trade_no, order: @order, cup: @cup } %>
 </div>

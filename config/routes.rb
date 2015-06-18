@@ -1,7 +1,7 @@
-HaoqiAlipay::Application.routes.draw do
-  post 'orders/notify'
-  get 'orders/done'
+Rails.application.routes.draw do
+  get "/orders/done" => "orders#done"
+  post "/orders/alipay_notify" => "orders#alipay_notify"
   resources :orders
-  post '/checkout' => "orders#checkout"
-  root :to => "orders#new"
+  resources :cups
+  root 'cups#index'
 end
