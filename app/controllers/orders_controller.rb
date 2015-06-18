@@ -8,6 +8,10 @@ class OrdersController < ApplicationController
     @out_trade_no = Time.now.to_i.to_s
   end
 
+  def show
+     @order = Order.find_by_out_trade_no(params[:out_trade_no])
+  end
+
   def create
     @order = Order.new(order_params)
     if @order.save
@@ -19,7 +23,7 @@ class OrdersController < ApplicationController
     if @order.trade_status == "finished"
       flash[:notice] = "恭喜你，付款成功了！"
     end
-    redirect_to :root
+    redirect_to "/order/" + @order.out_trade_no
   end
 
   def alipay_notify
