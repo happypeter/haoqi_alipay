@@ -1,2 +1,35 @@
 01_intro.mov
 介绍本课程的思路，要实现的功能。
+
+02_contract_doc.mov
+和支付宝签订担保交易收款合同，得到 pid 和 key 。下载开发文档。
+
+可以到 <a href="http://b.alipay.com">b.alipay.com</a> 点击“产品商店”，选择“产品大全”，看到”担保交易收款“，点进入。国内的网站都是要备案的，用不用支付宝都一样。但是如果你的服务器在国外，网站也没有备案，那么也一样是可以使用支付宝的。比如我自己的 <a href="http://haoqicat.com">haoqicat.com</a> 就是这种情况，而且用支付宝接口收款两年多了，没有任何问题。
+
+一次签约的期限大概是一年吧，到期之后，支付宝公司的服务还是很贴心的，不断给你发短信，邮件，不断提醒你续签合同，续签是很简单的，而且也不收钱。
+
+下载文档，并进行解压缩。
+在 ubuntu 中使用 unzip 来进行解压缩
+
+<pre><code>
+  unzip -O GBK alipayescow.zip
+</code></pre>
+
+上面 -O 后面添加编码格式是必须的，不然解压出来的文件名就都是乱码。解压后由个别文件中的中文内容是乱码，可以用下面的命令来转换编码格式。
+
+<pre><code>
+  iconv -f GBK -t UTF-8 -o output.txt 更新日志.txt
+</code></pre>
+
+
+提一下，支付宝官方有一个 <a href="http://fun.alipay.com/zfbxt/qianyueditu.htm?src=nsf04">签约地图</a> 的页面，挺好看。
+
+03_setup_project.mov
+
+搭建 rails 项目，使用 alipay 这个 Gem，并添加 PID/KEY 进来。
+
+支付宝官方教程在 <a href="http://fun.alipay.com/zfbxt/">这里</a>。
+
+<a href="http://fun.alipay.com/zfbxt/jicheng.html#pidkey">什么是 PID/KEY ？</a>
+
+使用 PID/KEY 的时候，我曾经犯过一个低级错误。我其实有两个支付宝账户，一个是申请了担保交易接口的，一个没有，结果我用那个根本没有申请的账户登录，拿到了 PID/KEY ，这一对儿家伙用上之后，当我向支付宝发出请求的时候，支付宝返回的错误是 `错误代码 HAS_NO_PRIVILEGE` 。这个基本的意思，大概就是这个 PID 对应的用户根本就没跟我们签”担保交易接口“的使用协议呀。
