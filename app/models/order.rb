@@ -1,5 +1,4 @@
 class Order < ActiveRecord::Base
-  belongs_to :cup
 
   def pay_url
     Alipay::Service.create_partner_trade_by_buyer_url({
