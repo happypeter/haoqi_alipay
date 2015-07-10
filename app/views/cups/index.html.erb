@@ -1,0 +1,14 @@
+<% content_for :head do  %>
+  全部商品
+<% end %>
+<div class="items clearfix">
+<% @cups.each do |cup| %>
+  <div class="item">
+    <%= image_tag cup.cover , class: "cover" %>
+    <p class="title"><%= cup.name %>（<%= cup.price %>元）</p>
+    <a href="orders/new?cup_id=<%= cup.id %>" class="buy-btn">
+      购买
+    </a>
+  </div>
+<% end %>
+</div>
