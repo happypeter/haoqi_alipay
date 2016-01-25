@@ -1,4 +1,8 @@
 
+### 重要更新
+
+[支付宝这边](https://b.alipay.com/order/productSet.htm) 已经不提供咱们这里要使用的 __担保交易接口__ 了，悲催！
+
 
 ### 课程概要
 
