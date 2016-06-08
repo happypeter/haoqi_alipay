@@ -6,13 +6,12 @@
 
 ### 课程概要
 
-对支付宝的双接口集成到一个网站进行讲解，实例代码采用 RubyonRails 框架。课程地址：http://haoqicat.com/happypeter/zhi-fu-bao-shou-kuan-ji-cheng/
+对支付宝的双接口集成到一个网站进行讲解，实例代码采用 RubyonRails 框架。课程地址：http://haoqicat.com/alipay
 
-视频笔记地址：http://c.haoduoshipin.com/haoqi-alipay/
 
 ### 欢迎批评或提问
 
-可以到 https://github.com/happypeter/haoqi_alipay/issues 提问，也可以在好奇猫上的课程页面留下评论，这两个地方我都会查收到的。
+欢迎添加 Peter 的微信： happypeter1983 （不承诺又问必答）
 
 
 ### 改版历史
